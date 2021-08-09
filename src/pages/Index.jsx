@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // 
 import AppBar from '../components/AppBar';
 import Map from '../components/Map';
+import Form from '../components/Form';
 import Footer from '../components/Footer';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +25,7 @@ export default function Album() {
                     <Map />
                 </Grid>
                 <Grid item xs={12}>
-                    {/* <Map /> */}
+                    <Form />
                 </Grid>
                 <Grid item xs={12}>
                     <Footer />

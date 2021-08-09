@@ -1,6 +1,7 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+// import Toolbar from '@material-ui/core/Toolbar';
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -12,11 +13,10 @@ const useStyles = makeStyles((theme) => ({
     root: {
         backgroundColor: '#fff',
         color: "#2F67C8",
-        flexGrow: 1
-    },
-    container: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2)
+        flexGrow: 1,
+        boxShadow: 'none',
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1)
     },
     alignLeft: {
         textAlign: 'left'
@@ -35,15 +35,15 @@ export default function AppBarComponent() {
 
     return (
         <AppBar position="relative" className={classes.root}>
-            <Toolbar>
-                <Grid container className={classes.container}>
+            <Container maxWidth="lg">
+                <Grid container>
                     <Grid item xs={6} className={classes.alignLeft}>
                         <img alt="Ayo Vaksin | Metrotech Digital Asia" src={logo} height={47} width={108} />
                     </Grid>
                     <Grid item xs={6} className={classes.alignRight}>
                         <Grid container>
                             <Grid item xs={12} md={12} className={classes.center}>
-                                <Typography variant="body1" color="inherit">
+                                <Typography variant="body2" color="secondary">
                                     <b>Beranda</b>
                                 </Typography>
                             </Grid>
@@ -55,7 +55,7 @@ export default function AppBarComponent() {
                         </Grid>
                     </Grid>
                 </Grid>
-            </Toolbar>
+            </Container>
         </AppBar>
     );
 }
