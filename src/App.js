@@ -2,6 +2,7 @@ import './App.css';
 import Index from './pages/Index';
 import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
 
 const theme = createTheme({
   typography: {
@@ -21,7 +22,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Index />
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Index}></Route>
+          </Switch>
+        </Router>
       </div>
     </ThemeProvider>
   );

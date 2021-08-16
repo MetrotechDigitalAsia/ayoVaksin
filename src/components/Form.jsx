@@ -29,6 +29,9 @@ import { PoskoVaksin } from '../data/PoskoVaksin';
 // 
 import Format from '../utils/DateFormat';
 
+// 
+import AlertDialog from '../components/Dialog/Alert';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         paddingTop: theme.spacing(4),
@@ -45,7 +48,9 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
     },
     resetButton: {
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        fontWeight: 'bold',
+        color: '#da2e2e'
     }
 }));
 
@@ -60,9 +65,13 @@ export default function Form() {
     const [poskoVaksin19, setPoskoVaksin19] = useState(PoskoVaksin);
 
     // 
+    const [openAlertDialog, setOpenAlertDialog] = useState(false);
+
+    // 
     const findPoskoCovid = () => {
         const filterDate = PoskoVaksin.filter(x => x.date.join("").includes(Format.FullDate(selectedDate)));
         const filterDose = filterDate.filter(x => x.dose.join("").includes(dosisVaksin19));
+        setOpenAlertDialog(filterDose.length === 0 ? true : false)
         return filterDose;
     }
 
@@ -84,13 +93,19 @@ export default function Form() {
     const handleResetFilter = (e) => {
         e.preventDefault();
         setPoskoVaksin19(PoskoVaksin);
-        setDosisVaksin19('')
-        setSelectedDate(new Date())
+        setDosisVaksin19('');
+        setSelectedDate(new Date());
+        setOpenAlertDialog(false);
+    }
+
+    const handleCloseAlertDialog = () => {
+        setOpenAlertDialog(false);
     }
 
     return (
         <div>
             <Map dosisVaksin={poskoVaksin19} />
+            <AlertDialog isOpen={openAlertDialog} isClose={handleCloseAlertDialog} />
             <Container maxWidth="lg" className={classes.root}>
                 <Grid container spacing={4}>
                     <Grid item xs={12} md={12}>
@@ -153,7 +168,7 @@ export default function Form() {
                                 </FormControl>
                             </Grid>
                             <Grid item xs={12} md={3} style={{ alignSelf: 'center' }}>
-                                <Button onClick={handleFilterData} variant="contained" color="secondary" fullWidth>Generate</Button>
+                                <Button disabled={!dosisVaksin19} onClick={handleFilterData} variant="contained" color="secondary" fullWidth>Generate</Button>
                             </Grid>
                         </Grid>
                     </Grid>
