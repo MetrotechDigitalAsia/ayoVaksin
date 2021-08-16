@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Index from './pages/Index';
+import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { BrowserRouter as Router,Switch, Route } from "react-router-dom";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'Poppins'
+  },
+  palette: {
+    primary: {
+      main: '#2F67C8'
+    },
+    secondary: {
+      main: '#0D2E68'
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Index}></Route>
+          </Switch>
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 
