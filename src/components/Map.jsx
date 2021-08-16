@@ -92,8 +92,6 @@ const SimpleMap = ({ ...props }) => {
 
     const { dosisVaksin } = props
 
-    console.log(dosisVaksin)
-
     return (
         <div>
             <Map center={[-5.143467, 119.407528]} zoom={13} scrollWheelZoom={false} className={isMobileView ? classes.map : classes.mapMobile}>

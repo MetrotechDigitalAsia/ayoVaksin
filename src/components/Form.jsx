@@ -1,3 +1,4 @@
+import 'date-fns';
 import React, { useState } from 'react'
 import Grid from '@material-ui/core/Grid';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
@@ -10,9 +11,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Typography from '@material-ui/core/Typography';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 // 
 import Title from './Title';
@@ -20,6 +25,9 @@ import Map from './Map';
 
 // 
 import { PoskoVaksin } from '../data/PoskoVaksin';
+
+// 
+import Format from '../utils/DateFormat';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,16 +51,23 @@ export default function Form() {
     const theme = useTheme();
     const isMobileView = useMediaQuery(theme.breakpoints.up('lg'));
 
-    const [value, setValue] = useState('female');
+    const [tipePenanggulangan, setTipePenaggulangan] = useState('Posko Vaksin Covid19');
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const [dosisVaksin19, setDosisVaksin19] = useState("");
     const [poskoVaksin19, setPoskoVaksin19] = useState(PoskoVaksin);
 
-
     // 
-    const findPoksoCovid = PoskoVaksin.filter(x => x.dose.join("").includes(dosisVaksin19));
+    const findPoskoCovid = () => {
+        const filterDate = PoskoVaksin.filter(x => x.date.join("").includes(Format.FullDate(selectedDate)));
+        const filterDose = filterDate.filter(x => x.dose.join("").includes(dosisVaksin19));
+        return filterDose;
+    }
 
-    const handleChangeRadio = (event) => {
-        setValue(event.target.value);
+    const handleChangeTipePenanggulangan = (event) => {
+        setTipePenaggulangan(event.target.value);
+    };
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
     };
     const handleChangeDosisVaksin = (event) => {
         setDosisVaksin19(event.target.value);
@@ -60,7 +75,7 @@ export default function Form() {
 
     const handleFilterData = (e) => {
         e.preventDefault();
-        setPoskoVaksin19(findPoksoCovid);
+        setPoskoVaksin19(findPoskoCovid);
     }
 
     return (
@@ -78,9 +93,9 @@ export default function Form() {
                             </Grid>
                             <Grid item xs={12} md={12} style={{ textAlign: 'left' }}>
                                 <FormControl component="fieldset">
-                                    <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChangeRadio}>
-                                        <FormControlLabel value="female" control={<Radio />} label={<Typography variant="subtitle2">Posko Vaksin Covid19</Typography>} />
-                                        <FormControlLabel disabled value="male" control={<Radio />} label={<Typography variant="subtitle2">Posko Penanggulangan Covid19</Typography>} />
+                                    <RadioGroup value={tipePenanggulangan} onChange={handleChangeTipePenanggulangan}>
+                                        <FormControlLabel value="Posko Vaksin Covid19" control={<Radio />} label={<Typography variant="subtitle2">Posko Vaksin Covid19</Typography>} />
+                                        <FormControlLabel disabled value="Posko Penanggulangan Covid19" control={<Radio />} label={<Typography variant="subtitle2">Posko Penanggulangan Covid19</Typography>} />
                                     </RadioGroup>
                                 </FormControl>
                             </Grid>
@@ -92,17 +107,20 @@ export default function Form() {
                                 <Title isHeader={false} mainTitle={"Filter 2"} subTitle={"Pilih Tanggal & Dosis Vaksin."} />
                             </Grid>
                             <Grid item xs={12} md={5} style={{ textAlign: 'left' }}>
-                                <form className={classes.container} noValidate>
-                                    <TextField
-                                        label="Tanggal Vaksin"
-                                        type="date"
-                                        defaultValue="2017-05-24"
-                                        className={classes.formControl}
-                                        InputLabelProps={{
-                                            shrink: true,
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <KeyboardDatePicker
+                                        style={{ width: '100%' }}
+                                        disableToolbar
+                                        variant="inline"
+                                        format="dd/MM/yyyy"
+                                        margin="normal"
+                                        value={selectedDate}
+                                        onChange={handleDateChange}
+                                        KeyboardButtonProps={{
+                                            'aria-label': 'change date',
                                         }}
                                     />
-                                </form>
+                                </MuiPickersUtilsProvider>
                             </Grid>
                             <Grid item xs={12} md={4} style={{ textAlign: 'left' }}>
                                 <FormControl className={classes.formControl}>
