@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import { useTheme, makeStyles } from '@material-ui/styles'
 import Button from '@material-ui/core/Button';
@@ -6,8 +6,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Icon } from 'leaflet';
 
 // 
-import labuangBaji from '../assets/hospital/labuangBaji.jpeg'
-import satbrimob from '../assets/hospital/satbrimob.jpeg'
 import vaccineIcon from '../assets/vaccine.png';
 
 const useStyles = makeStyles({
@@ -77,8 +75,8 @@ const MyPopupMarker = ({ ...props }) => {
     )
 }
 
-const MyMarkersList = ({ listMarker }) => {
-    const items = listMarker ? listMarker.map(({ key, ...props }) => (
+const MyMarkersList = ({ data }) => {
+    const items = data ? data.map(({ key, ...props }) => (
         <MyPopupMarker key={key} {...props} />
     )) : []
 
@@ -87,23 +85,14 @@ const MyMarkersList = ({ listMarker }) => {
     )
 }
 
-const SimpleMap = () => {
+const SimpleMap = ({ ...props }) => {
     const classes = useStyles()
     const theme = useTheme();
     const isMobileView = useMediaQuery(theme.breakpoints.up('lg'));
 
-    const [placeCategory] = useState('');
+    const { dosisVaksin } = props
 
-    // const handleChangeCategory = (event) => {
-    //     setPlaceCategory(event.target.value);
-    // };
-
-    const listMarker = [
-        { key: 'marker1', position: [-5.162372675272291, 119.41826702612505], subDistrict: 'Mamajang', img: labuangBaji, name: 'RS Labuang Baji', address: 'Jln. Dr. Ratulangi No 81, Makassar.', dose: ['Dosis Vaksin 1 '] },
-        { key: 'marker2', position: [-5.169756477632507, 119.4242401684531], subDistrict: 'Tamalate', img: satbrimob, name: 'Klinik Teratai Satbrimob Polda Sulsel', address: 'Jln. Sultan Alauddin No. 75, Makassar.', dose: ['Dosis Vaksin 1 ', 'Dosis Vaksin 2'] },
-    ]
-
-    const findPlace = placeCategory ? listMarker.filter(x => x.category.join("").includes(placeCategory)) : listMarker
+    console.log(dosisVaksin)
 
     return (
         <div>
@@ -111,7 +100,7 @@ const SimpleMap = () => {
                 <TileLayer
                     url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                 />
-                <MyMarkersList listMarker={findPlace} />
+                <MyMarkersList data={dosisVaksin} />
             </Map>
         </div>
     )
