@@ -44,8 +44,8 @@ const MyPopupMarker = ({ ...props }) => {
                 </div>
                 <div style={{ textAlign: 'left', paddingTop: 15 }}>
                     <Typography variant="h6" style={{ marginTop: 15 }}><b>{name}</b></Typography>
-                    <Typography variant="subtitle1" style={{ marginTop: '10px' }}>Alamat:</Typography>
-                    <Typography variant="subtitle2" style={{ marginBottom: '10px' }}><b>{address}</b></Typography>
+                    <h5 variant="subtitle1" style={{ marginTop: '10px', marginBottom: '-12px' }}>Alamat:</h5>
+                    <h4 style={{ marginBottom: '10px' }}><b>{address}</b></h4>
                     {/* <h5>
                         <Typography variant="body2">Tanggal:</Typography>
                     </h5>
@@ -56,10 +56,10 @@ const MyPopupMarker = ({ ...props }) => {
                             </div>
                         )}
                     </h4> */}
-                    <Typography variant="subtitle1">Waktu:</Typography>
-                    <Typography variant="subtitle2" style={{ marginBottom: '10px' }}><b>{time}</b></Typography>
-                    <Typography variant="subtitle1">Vaksin:</Typography>
-                    <Typography variant="subtitle2"><b>{dose.join(', ')}</b></Typography>
+                    <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Waktu:</h5>
+                    <h4 variant="subtitle2" style={{ marginBottom: '10px' }}><b>{time}</b></h4>
+                    <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Vaksin:</h5>
+                    <h4 variant="subtitle2"><b>{dose.join(', ')}</b></h4>
                     <div style={{ marginTop: 20 }}>
                         <Button className={classes.button} variant="contained" color="primary" onClick={(e) => {
                             handleOpenRoute(e, position);
