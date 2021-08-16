@@ -40,10 +40,10 @@ const MyPopupMarker = ({ ...props }) => {
         <Marker key={`marker-${key}`} position={position} icon={new Icon({ iconUrl: vaccineIcon, iconSize: [35, 37] })}>
             <Popup>
                 <div style={{ margin: -20 }}>
-                    <img alt={name} src={img} width="100%" height="100%" style={{ borderRadius: '13px 13px 0px 0px' }} />
+                    <img alt={name} src={img} width="100%" height={180} style={{ borderRadius: '13px 13px 0px 0px' }} />
                 </div>
                 <div style={{ textAlign: 'left', paddingTop: 15 }}>
-                    <Typography variant="h6" style={{ marginTop: 15 }}><b>{name}</b></Typography>
+                    <Typography variant="h6" style={{ marginTop: 15, fontWeight: 'bold' }}>{name}</Typography>
                     <h5 variant="subtitle1" style={{ marginTop: '10px', marginBottom: '-12px' }}>Alamat:</h5>
                     <h4 style={{ marginBottom: '10px' }}><b>{address}</b></h4>
                     {/* <h5>

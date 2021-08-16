@@ -11,6 +11,9 @@ import Grid from '@material-ui/core/Grid';
 // 
 import logo from '../../assets/logo.svg';
 
+// 
+import Divider from '@material-ui/core/Divider';
+
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -36,12 +39,16 @@ export default function AlertDialogSlide({ ...props }) {
                                 <Typography variant="body2" align="center">by Metrotech Digital Asia</Typography>
                             </Grid>
                             <Grid item xs={12}>
-                                <Typography variant="h6" align="left" style={{ marginBottom: 10, fontWeight: 'bold' }}>Tentang AyoVaksin:</Typography>
-                                <Typography variant="subtitle1" align="left" style={{ marginBottom: 15 }}>Merupakan sebuah peta digital yang bertujuan untuk menyediakan layanan informasi mengenai tempat vaksinasi Covid19 di area Makassar, Indonesia.</Typography>
-                                <Typography variant="subtitle1" align="left">Dengan adanya peta digital ini, kami harap dapat memberikan kemudahan dalam mengakses tempat vaksinasi Covid19 terutama untuk warga Makassar, Indonesia.</Typography>
+                                <Typography variant="body1" align="left" style={{ marginBottom: 10, fontWeight: 'bold' }}>Tentang AyoVaksin:</Typography>
+                                <Typography align="left" style={{ marginBottom: 15, fontSize: 14, lineHeight: 1.7 }}>Merupakan sebuah media dalam bentuk peta digital yang bertujuan untuk menyediakan layanan informasi mengenai tempat vaksinasi Covid19 di area Makassar, Indonesia.</Typography>
+                                <Typography align="left" style={{ fontSize: 14, lineHeight: 1.7 }}>Dengan adanya AyoVaksin, kami harap dapat memberikan kemudahan dalam mengakses tempat vaksinasi Covid19 terutama untuk warga Makassar, Indonesia.</Typography>
                             </Grid>
                             <Grid item xs={12}>
-                                <Typography variant="subtitle2" align="left">*<b>Catatan</b>: Data yang tersedia merupakan data yang kami rangkum dari berbagai sumber yang tersebar di sosial media. Sehingga, memungkinkan untuk data tidak akurat.</Typography>
+                                <Divider />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Typography align="left" style={{ marginBottom: 10, fontSize: 13 }}>*<b>Disclaimer</b>: </Typography>
+                                <Typography align="left" style={{ fontSize: 13, lineHeight: 1.7 }}>Data yang tersedia merupakan data yang kami rangkum dari berbagai sumber yang tersebar di sosial media. Sehingga, memungkinkan untuk data tidak akurat.</Typography>
                             </Grid>
                         </Grid>
                     </DialogContentText>
