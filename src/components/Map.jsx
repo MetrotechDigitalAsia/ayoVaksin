@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 
 const MyPopupMarker = ({ ...props }) => {
     const classes = useStyles()
-    const { key, img, name, address, position, dose } = props
+    const { key, date, time, img, name, address, position, dose } = props
 
     const handleOpenRoute = (e, position) => {
         const url = "http://maps.google.com/?q=" + position;
@@ -51,6 +51,22 @@ const MyPopupMarker = ({ ...props }) => {
                     <h4 style={{ marginTop: '-15px' }}>
                         <b>{address}</b>
                     </h4>
+                    <h5>
+                        Tanggal:
+                    </h5>
+                    <h4 style={{ marginTop: '-15px' }}>
+                        {date.map((list, key) =>
+                            <div key={key}>
+                                <b>{list}</b>
+                            </div>
+                        )}
+                    </h4>
+                    <h5>
+                        Waktu:
+                    </h5>
+                    <h4 style={{ marginTop: '-15px' }}>
+                        <b>{time}</b>
+                    </h4>
                     <h5 style={{ marginBottom: '2px' }}>
                         Vaksin:
                     </h5>
@@ -64,11 +80,11 @@ const MyPopupMarker = ({ ...props }) => {
                             handleOpenRoute(e, position);
                         }} fullWidth>Rute</Button>
                     </div>
-                    <div style={{ marginTop: 10 }}>
+                    {/* <div style={{ marginTop: 10 }}>
                         <Button className={classes.button} variant="contained" color="secondary" onClick={(e) => {
                             handleOpenRoute(e, position);
                         }} fullWidth>Hubungi Tempat</Button>
-                    </div>
+                    </div> */}
                 </div>
             </Popup>
         </Marker>

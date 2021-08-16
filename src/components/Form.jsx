@@ -44,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexWrap: 'wrap',
     },
+    resetButton: {
+        justifyContent: 'flex-end'
+    }
 }));
 
 export default function Form() {
@@ -78,6 +81,13 @@ export default function Form() {
         setPoskoVaksin19(findPoskoCovid);
     }
 
+    const handleResetFilter = (e) => {
+        e.preventDefault();
+        setPoskoVaksin19(PoskoVaksin);
+        setDosisVaksin19('')
+        setSelectedDate(new Date())
+    }
+
     return (
         <div>
             <Map dosisVaksin={poskoVaksin19} />
@@ -104,7 +114,14 @@ export default function Form() {
                     <Grid item xs={12} md={8}>
                         <Grid container spacing={isMobileView ? 4 : 2}>
                             <Grid item xs={12}>
-                                <Title isHeader={false} mainTitle={"Filter 2"} subTitle={"Pilih Tanggal & Dosis Vaksin."} />
+                                <Grid container>
+                                    <Grid item xs={6} md={10}>
+                                        <Title isHeader={false} mainTitle={"Filter 2"} subTitle={"Pilih Tanggal & Dosis Vaksin."} />
+                                    </Grid>
+                                    <Grid item xs={6} md={2}>
+                                        <Button onClick={handleResetFilter} color="secondary" className={classes.resetButton} fullWidth>Reset Filter</Button>
+                                    </Grid>
+                                </Grid>
                             </Grid>
                             <Grid item xs={12} md={5} style={{ textAlign: 'left' }}>
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
