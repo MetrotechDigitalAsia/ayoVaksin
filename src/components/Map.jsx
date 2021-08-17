@@ -28,12 +28,23 @@ const useStyles = makeStyles({
 
 const MyPopupMarker = ({ ...props }) => {
     const classes = useStyles()
-    const { key, time, img, name, address, position, dose } = props
+    const { key, time, img, name, organizer, date, address, position, dose, website, phoneNumber } = props
 
     const handleOpenRoute = (e, position) => {
         const url = "http://maps.google.com/?q=" + position;
         e.preventDefault();
         window.open(url, '_blank', 'noopener,noreferrer')
+    }
+
+    const handleOpenCallOrganizer = (e, phoneNumber) => {
+        const url = "tel:" + phoneNumber;
+        e.preventDefault();
+        window.open(url, '_blank', 'noopener,noreferrer')
+    }
+
+    const handleOpenRegistrationLink = (e, website) => {
+        e.preventDefault();
+        window.open(website, '_blank', 'noopener,noreferrer')
     }
 
     return (
@@ -44,15 +55,22 @@ const MyPopupMarker = ({ ...props }) => {
                 </div>
                 <div style={{ textAlign: 'left', paddingTop: 15 }}>
                     <Typography variant="h6" style={{ marginTop: 15, fontWeight: 'bold' }}>{name}</Typography>
-                    <h5 variant="subtitle1" style={{ marginTop: '10px', marginBottom: '-12px' }}>Alamat:</h5>
+                    <h5 variant="subtitle1" style={{ marginTop: '10px', marginBottom: '-5px' }}>Penyelenggara:</h5>
+                    <h4 style={{ marginTop: '10px' }}>
+                        {organizer.map((list, key) =>
+                            <div key={key}>
+                                <b>{list}</b>
+                            </div>
+                        )}
+                    </h4>
+                    <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Alamat:</h5>
                     <h4 style={{ marginBottom: '10px' }}><b>{address}</b></h4>
-                    {/* <h5>
-                        <Typography variant="body2">Tanggal:</Typography>
-                    </h5>
-                    <h4 style={{ marginTop: '-15px' }}>
+                    <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Tanggal:</h5>
+                    <h4 variant="subtitle2"><b>{date.join(', ')}</b></h4>
+                    {/* <h4 style={{ marginBottom: '10px' }}>
                         {date.map((list, key) =>
                             <div key={key}>
-                                <Typography variant="subtitle2"><b>{list}</b></Typography>
+                                <b>{list}</b>
                             </div>
                         )}
                     </h4> */}
@@ -65,11 +83,24 @@ const MyPopupMarker = ({ ...props }) => {
                             handleOpenRoute(e, position);
                         }} fullWidth>Rute</Button>
                     </div>
-                    {/* <div style={{ marginTop: 10 }}>
-                        <Button className={classes.button} variant="contained" color="secondary" onClick={(e) => {
-                            handleOpenRoute(e, position);
-                        }} fullWidth>Hubungi Tempat</Button>
-                    </div> */}
+                    {
+                        phoneNumber === '' ?
+                            null :
+                            <div style={{ marginTop: 10 }}>
+                                <Button className={classes.button} variant="contained" color="secondary" onClick={(e) => {
+                                    handleOpenCallOrganizer(e, phoneNumber);
+                                }} fullWidth>Hubungi Penyelenggara</Button>
+                            </div>
+                    }
+                    {
+                        website === '' ?
+                            null :
+                            <div style={{ marginTop: 10 }}>
+                                <Button className={classes.button} variant="contained" color="secondary" onClick={(e) => {
+                                    handleOpenRegistrationLink(e, website);
+                                }} fullWidth>Link Pendaftaran</Button>
+                            </div>
+                    }
                 </div>
             </Popup>
         </Marker>

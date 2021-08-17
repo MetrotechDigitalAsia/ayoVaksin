@@ -99,6 +99,9 @@ export default function Form() {
     }
 
     const handleCloseAlertDialog = () => {
+        setPoskoVaksin19(PoskoVaksin);
+        setDosisVaksin19('');
+        setSelectedDate(new Date());
         setOpenAlertDialog(false);
     }
 
