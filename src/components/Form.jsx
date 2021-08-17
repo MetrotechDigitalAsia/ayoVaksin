@@ -146,6 +146,7 @@ export default function Form() {
                                         variant="inline"
                                         format="dd/MM/yyyy"
                                         margin="normal"
+                                        minDate={new Date()}
                                         value={selectedDate}
                                         onChange={handleDateChange}
                                         KeyboardButtonProps={{

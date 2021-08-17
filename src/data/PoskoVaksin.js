@@ -7,6 +7,7 @@ import telkomPettarani from '../assets/hospital/telkomPettarani.jpeg'
 import athirahKajolalido from '../assets/hospital/athirahKajolalido.jpeg'
 import rsPelamonia from '../assets/hospital/rsPelamonia.jpeg'
 import makodim from '../assets/hospital/makodim.jpeg'
+import fourPoint from '../assets/hospital/fourPoint.jpeg'
 
 export const PoskoVaksin = [{
         key: 'marker1',
@@ -44,7 +45,7 @@ export const PoskoVaksin = [{
         img: bugisWaterpark,
         name: 'Bugis Waterpark (Bukit Baruga Antang)',
         address: 'Perumahan Bukit Baruga Jln Sektor Mahamero No.1, Kota Makassar.',
-        date: ['16-08-2021', '17-08-2021'],
+        date: ['17-08-2021'],
         time: '09.00 - 15.00',
         dose: ['Dosis Vaksin 1 ']
     },
@@ -54,7 +55,7 @@ export const PoskoVaksin = [{
         img: universitasFajar,
         name: 'Universitas Fajar',
         address: 'Jl. Prof. Abdurahman Basalamah No.101, Kota Makassar.',
-        date: ['18-08-2021', '19-08-2021'],
+        date: ['19-08-2021'],
         time: '09.00 - 17.00',
         dose: ['Dosis Vaksin 1 ']
     },
@@ -95,6 +96,16 @@ export const PoskoVaksin = [{
         name: 'Makodim 1408 Makassar',
         address: 'Jl. Lanto Dg. Pasewang, Kota Makassar.',
         date: ['17-08-2021', '18-08-2021', '19-08-2021', '23-08-2021', '24-08-2021', '25-08-2021', '26-08-2021', '30-08-2021', '31-08-2021'],
+        time: '08.00 - Selesai',
+        dose: ['Dosis Vaksin 1 ']
+    },
+    {
+        key: 'marker10',
+        position: [-5.167595088294924, 119.42834875496102],
+        img: fourPoint,
+        name: 'Four Point By Sheraton',
+        address: 'Jl. Andi Djemma No.130, Kota Makassar.',
+        date: ['23-08-2021', '24-08-2021'],
         time: '08.00 - Selesai',
         dose: ['Dosis Vaksin 1 ']
     },

@@ -48,7 +48,7 @@ export default function AlertDialogSlide({ ...props }) {
                             </Grid>
                             <Grid item xs={12}>
                                 <Typography align="left" style={{ marginBottom: 10, fontSize: 13 }}>*<b>Disclaimer</b>: </Typography>
-                                <Typography align="left" style={{ fontSize: 13, lineHeight: 1.7 }}>Data yang tersedia merupakan data yang kami rangkum dari berbagai sumber yang tersebar di sosial media. Sehingga, memungkinkan untuk data tidak akurat.</Typography>
+                                <Typography align="left" style={{ fontSize: 13, lineHeight: 1.7 }}>Data yang tersedia merupakan data yang kami rangkum dari berbagai sumber yang tersebar di sosial media. Sehingga, memungkinkan untuk data kurang akurat.</Typography>
                             </Grid>
                         </Grid>
                     </DialogContentText>
