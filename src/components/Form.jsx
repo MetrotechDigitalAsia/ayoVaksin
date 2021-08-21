@@ -167,7 +167,6 @@ export default function Form() {
                                     >
                                         <MenuItem value={"Dosis Vaksin 1"}>Vaksin 1</MenuItem>
                                         <MenuItem value={"Dosis Vaksin 2"}>Vaksin 2</MenuItem>
-                                        <MenuItem value={"Dosis Vaksin 1 & 2"}>Vaksin 1 & 2</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>
