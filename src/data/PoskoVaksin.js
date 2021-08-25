@@ -3,29 +3,17 @@ import telkomPettarani from '../assets/hospital/telkomPettarani.jpeg'
 import athirahKajolalido from '../assets/hospital/athirahKajolalido.jpeg'
 import rsPelamonia from '../assets/hospital/rsPelamonia.jpeg'
 import makodim from '../assets/hospital/makodim.jpeg'
-import fourPoint from '../assets/hospital/fourPoint.jpeg'
-import pmiSulsel from '../assets/hospital/pmiSulsel.jpeg'
+import gedungLestari from '../assets/hospital/gedungLestari.jpeg'
 import briMakassar from '../assets/hospital/briMakassar.jpeg'
 import stibaMakassar from '../assets/hospital/stibaMakassar.jpeg'
 import mallNipah from '../assets/hospital/mallNipah.jpeg'
 import wismaKalla from '../assets/hospital/wismaKalla.jpeg'
 import masjidAlmarkaz from '../assets/hospital/masjidAlmarkaz.jpeg'
+import rsuWisataUIT from '../assets/hospital/rsuWisataUIT.jpeg'
 
-export const PoskoVaksin = [{
-        key: 'marker1',
-        position: [-5.151948628412573, 119.43770715125721],
-        img: pmiSulsel,
-        name: 'PMI Sulawesi Selatan',
-        organizer: ['DPD KNPI Sulawesi Selatan'],
-        address: 'Jl. A. P. Pettarani No.49, Masale, Kota Makassar.',
-        date: ['22-08-2021'],
-        time: '08.00 - 16.00',
-        dose: ['Dosis Vaksin 1 '],
-        website: 'https://forms.gle/JNgTaXCCzHZmVTZz9',
-        phoneNumber: '+6287877162014'
-    },
+export const PoskoVaksin = [
     {
-        key: 'marker2',
+        key: 'marker1',
         position: [-5.169532207176348, 119.43412321078118],
         img: telkomPettarani,
         name: 'Telkom Pettarani',
@@ -38,7 +26,7 @@ export const PoskoVaksin = [{
         phoneNumber: ''
     },
     {
-        key: 'marker3',
+        key: 'marker2',
         position: [-5.134976480771379, 119.41017822797673],
         img: athirahKajolalido,
         name: 'Athirah Kajolalido',
@@ -51,7 +39,7 @@ export const PoskoVaksin = [{
         phoneNumber: ''
     },
     {
-        key: 'marker4',
+        key: 'marker3',
         position: [-5.137977668149517, 119.41490895312386],
         img: rsPelamonia,
         name: 'Rumah Sakit Pelamonia',
@@ -64,7 +52,7 @@ export const PoskoVaksin = [{
         phoneNumber: ''
     },
     {
-        key: 'marker5',
+        key: 'marker4',
         position: [-5.152189657507509, 119.41909176845304],
         img: makodim,
         name: 'Makodim 1408 Makassar',
@@ -77,20 +65,7 @@ export const PoskoVaksin = [{
         phoneNumber: ''
     },
     {
-        key: 'marker6',
-        position: [-5.167595088294924, 119.42834875496102],
-        img: fourPoint,
-        name: 'Four Point By Sheraton',
-        organizer: ['Hipmi Sulsel'],
-        address: 'Jl. Andi Djemma No.130, Kota Makassar.',
-        date: ['23-08-2021', '24-08-2021'],
-        time: '08.00 - Selesai',
-        dose: ['Dosis Vaksin 1', 'Dosis Vaksin 2'],
-        website: 'https://linktr.ee/hipmisulselvaksin',
-        phoneNumber: '+6285240370257'
-    },
-    {
-        key: 'marker7',
+        key: 'marker5',
         position: [-5.12661847797803, 119.50233176845285],
         img: briMakassar,
         name: 'Campus BRI Makassar',
@@ -103,7 +78,7 @@ export const PoskoVaksin = [{
         phoneNumber: ''
     },
     {
-        key: 'marker8',
+        key: 'marker6',
         position: [-5.162408816528068, 119.50819111046101],
         img: stibaMakassar,
         name: 'Sekolah Tinggi Ilmu Bahasa Arab (STIBA)',
@@ -116,7 +91,7 @@ export const PoskoVaksin = [{
         phoneNumber: '+628114414030'
     },
     {
-        key: 'marker9',
+        key: 'marker7',
         position: [-5.153460743354777, 119.41730949728893],
         img: mallRatuIndah,
         name: 'Mall Ratu Indah',
@@ -129,7 +104,7 @@ export const PoskoVaksin = [{
         phoneNumber: '+628114414030'
     },
     {
-        key: 'marker10',
+        key: 'marker8',
         position: [-5.139506439438542, 119.44999286834367],
         img: mallNipah,
         name: 'Mall Nipah',
@@ -142,7 +117,7 @@ export const PoskoVaksin = [{
         phoneNumber: '+628114414030'
     },
     {
-        key: 'marker11',
+        key: 'marker9',
         position: [-5.14918215954018, 119.41516784007041],
         img: wismaKalla,
         name: 'Wisma Kalla',
@@ -155,7 +130,7 @@ export const PoskoVaksin = [{
         phoneNumber: '+628114414030'
     },
     {
-        key: 'marker12',
+        key: 'marker10',
         position: [-5.129641690044929, 119.42611381101787],
         img: masjidAlmarkaz,
         name: 'Masjid Al Markaz',
@@ -166,5 +141,31 @@ export const PoskoVaksin = [{
         dose: ['Dosis Vaksin 2'],
         website: '',
         phoneNumber: '+628114414030'
+    },
+    {
+        key: 'marker11',
+        position: [-5.139702910572529, 119.44512624502278],
+        img: gedungLestari,
+        name: 'Gedung Lestari Bosowa',
+        organizer: ['Yayasan Hadji Kalla', 'Bosowa Peduli', 'PSM Makassar'],
+        address: 'Jl. Urip Sumoharjo No.263, Kota Makassar.',
+        date: ['26-08-2021', '27-08-2021'],
+        time: '08.00 - 15.00',
+        dose: ['Dosis Vaksin 1', 'Dosis Vaksin 2'],
+        website: '',
+        phoneNumber: ''
+    },
+    {
+        key: 'marker12',
+        position: [-5.184942422674504, 119.41367474098514],
+        img: rsuWisataUIT,
+        name: 'RSU Wisata UIT',
+        organizer: ['PKB'],
+        address: 'Jl. Abd. Kadir No.70, Kota Makassar.',
+        date: ['27-08-2021'],
+        time: '08.00 - Selesai',
+        dose: ['Dosis Vaksin 1'],
+        website: '',
+        phoneNumber: ''
     },
 ]
