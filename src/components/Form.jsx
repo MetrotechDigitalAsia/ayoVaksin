@@ -88,6 +88,8 @@ export default function Form() {
     const handleFilterData = (e) => {
         e.preventDefault();
         setPoskoVaksin19(findPoskoCovid);
+        // Set to top
+        window.scrollTo(0, 0);
     }
 
     const handleResetFilter = (e) => {
