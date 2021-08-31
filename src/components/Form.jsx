@@ -88,6 +88,8 @@ export default function Form() {
     const handleFilterData = (e) => {
         e.preventDefault();
         setPoskoVaksin19(findPoskoCovid);
+        // Set to top
+        window.scrollTo(0, 0);
     }
 
     const handleResetFilter = (e) => {
@@ -99,6 +101,9 @@ export default function Form() {
     }
 
     const handleCloseAlertDialog = () => {
+        setPoskoVaksin19(PoskoVaksin);
+        setDosisVaksin19('');
+        setSelectedDate(new Date());
         setOpenAlertDialog(false);
     }
 
@@ -146,6 +151,7 @@ export default function Form() {
                                         variant="inline"
                                         format="dd/MM/yyyy"
                                         margin="normal"
+                                        minDate={new Date()}
                                         value={selectedDate}
                                         onChange={handleDateChange}
                                         KeyboardButtonProps={{
@@ -163,7 +169,6 @@ export default function Form() {
                                     >
                                         <MenuItem value={"Dosis Vaksin 1"}>Vaksin 1</MenuItem>
                                         <MenuItem value={"Dosis Vaksin 2"}>Vaksin 2</MenuItem>
-                                        <MenuItem value={"Dosis Vaksin 1 & 2"}>Vaksin 1 & 2</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>
