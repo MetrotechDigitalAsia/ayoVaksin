@@ -16,6 +16,7 @@ export const PoskoVaksin = [
         date: ['05-09-2021'],
         time: '08:00 - Selesai',
         dose: ['Dosis Vaksin 1'],
+        vaccine: '',
         website: '',
         phoneNumber: '+62811447224'
     },
@@ -32,7 +33,7 @@ export const PoskoVaksin = [
         '27-09-2021', '28-09-2021', '29-09-2021','30-09-2021'],
         time: '08:00 - Selesai',
         dose: ['Dosis Vaksin 1', 'Dosis Vaksin 2'],
-        vaccine: ['SINOVAC', 'ASTRAZENECA'],
+        vaccine: ['Sinovac', 'Astrazeneca'],
         website: '',
         phoneNumber: ''
     },
@@ -49,7 +50,7 @@ export const PoskoVaksin = [
         '27-09-2021', '28-09-2021', '29-09-2021','30-09-2021'],
         time: '08:00 - Selesai',
         dose: ['Dosis Vaksin 1', 'Dosis Vaksin 2'],
-        vaccine: ['SINOVAC', 'ASTRAZENECA'],
+        vaccine: ['Sinovac', 'Astrazeneca'],
         website: '',
         phoneNumber: ''
     },
@@ -66,7 +67,7 @@ export const PoskoVaksin = [
         '27-09-2021', '28-09-2021', '29-09-2021','30-09-2021'],
         time: '09:00 - Selesai',
         dose: ['Dosis Vaksin 1'],
-        vaccine: ['SINOVAC'],
+        vaccine: ['Sinovac'],
         website: 'https://med.unismuh.ac.id/vaksin/',
         phoneNumber: '+6281356789119'
     },
@@ -80,7 +81,7 @@ export const PoskoVaksin = [
         date: ['07-09-2021','09-09-2021', '14-09-2021', '16-09-2021', '21-09-2021','23-09-2021', '28-09-2021', '30-09-2021'],
         time: '08:00 - Selesai',
         dose: ['Dosis Vaksin 1', 'Dosis Vaksin 2'],
-        vaccine: ['MODERNA'],
+        vaccine: ['Moderna'],
         website: 'https://linktr.ee/satgassulsel',
         phoneNumber: '+6282154021119'
     },
