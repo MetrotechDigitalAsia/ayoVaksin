@@ -62,6 +62,7 @@ export default function Form() {
     const [tipePenanggulangan, setTipePenaggulangan] = useState('Posko Vaksin Covid19');
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [dosisVaksin19, setDosisVaksin19] = useState("");
+    const [jenisVaksin19, setJenisVaksin19] = useState("");
     const [poskoVaksin19, setPoskoVaksin19] = useState(PoskoVaksin);
 
     // 
@@ -71,8 +72,9 @@ export default function Form() {
     const findPoskoCovid = () => {
         const filterDate = PoskoVaksin.filter(x => x.date.join("").includes(Format.FullDate(selectedDate)));
         const filterDose = filterDate.filter(x => x.dose.join("").includes(dosisVaksin19));
-        setOpenAlertDialog(filterDose.length === 0 ? true : false)
-        return filterDose;
+        const filterType = filterDose.filter(x => x.vaccine.join("").includes(jenisVaksin19));
+        setOpenAlertDialog(filterType.length === 0 ? true : false)
+        return filterType;
     }
 
     const handleChangeTipePenanggulangan = (event) => {
@@ -83,6 +85,9 @@ export default function Form() {
     };
     const handleChangeDosisVaksin = (event) => {
         setDosisVaksin19(event.target.value);
+    }
+    const handleChangeJenisVaksin = (event) => {
+        setJenisVaksin19(event.target.value);
     }
 
     const handleFilterData = (e) => {
@@ -96,6 +101,7 @@ export default function Form() {
         e.preventDefault();
         setPoskoVaksin19(PoskoVaksin);
         setDosisVaksin19('');
+        setJenisVaksin19('');
         setSelectedDate(new Date());
         setOpenAlertDialog(false);
     }
@@ -103,6 +109,7 @@ export default function Form() {
     const handleCloseAlertDialog = () => {
         setPoskoVaksin19(PoskoVaksin);
         setDosisVaksin19('');
+        setJenisVaksin19('');
         setSelectedDate(new Date());
         setOpenAlertDialog(false);
     }
@@ -132,7 +139,7 @@ export default function Form() {
                         </Grid>
                     </Grid>
                     <Grid item xs={12} md={8}>
-                        <Grid container spacing={isMobileView ? 4 : 2}>
+                        <Grid container spacing={isMobileView ? 2 : 2}>
                             <Grid item xs={12}>
                                 <Grid container>
                                     <Grid item xs={6} md={10}>
@@ -143,7 +150,7 @@ export default function Form() {
                                     </Grid>
                                 </Grid>
                             </Grid>
-                            <Grid item xs={12} md={5} style={{ textAlign: 'left' }}>
+                            <Grid item xs={12} md={12} style={{ textAlign: 'left' }}>
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                     <KeyboardDatePicker
                                         style={{ width: '100%' }}
@@ -151,6 +158,7 @@ export default function Form() {
                                         variant="inline"
                                         format="dd/MM/yyyy"
                                         margin="normal"
+                                        label="Tanggal Vaksinasi"
                                         minDate={new Date()}
                                         value={selectedDate}
                                         onChange={handleDateChange}
@@ -160,7 +168,7 @@ export default function Form() {
                                     />
                                 </MuiPickersUtilsProvider>
                             </Grid>
-                            <Grid item xs={12} md={4} style={{ textAlign: 'left' }}>
+                            <Grid item xs={12} md={6} style={{ textAlign: 'left' }}>
                                 <FormControl className={classes.formControl}>
                                     <InputLabel>Dosis Vaksin</InputLabel>
                                     <Select
@@ -172,7 +180,20 @@ export default function Form() {
                                     </Select>
                                 </FormControl>
                             </Grid>
-                            <Grid item xs={12} md={3} style={{ alignSelf: 'center' }}>
+                            <Grid item xs={12} md={6} style={{ textAlign: 'left' }}>
+                                <FormControl className={classes.formControl}>
+                                    <InputLabel>Jenis Vaksin</InputLabel>
+                                    <Select
+                                        value={jenisVaksin19}
+                                        onChange={handleChangeJenisVaksin}
+                                    >
+                                        <MenuItem value={"Sinovac"}>Sinovac</MenuItem>
+                                        <MenuItem value={"Astrazeneca"}>Astrazeneca</MenuItem>
+                                        <MenuItem value={"Moderna"}>Moderna</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid item xs={12} md={12} style={{ marginTop: 20 }}>
                                 <Button disabled={!dosisVaksin19} onClick={handleFilterData} variant="contained" color="secondary" fullWidth>Generate</Button>
                             </Grid>
                         </Grid>

@@ -28,7 +28,8 @@ const useStyles = makeStyles({
 
 const MyPopupMarker = ({ ...props }) => {
     const classes = useStyles()
-    const { key, time, img, name, organizer, date, address, position, dose, website, phoneNumber } = props
+    // console.log(props)
+    const { key, time, img, name, organizer, address, position, dose, vaccine, website, phoneNumber } = props
 
     const handleOpenRoute = (e, position) => {
         const url = "http://maps.google.com/?q=" + position;
@@ -65,8 +66,8 @@ const MyPopupMarker = ({ ...props }) => {
                     </h4>
                     <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Alamat:</h5>
                     <h4 style={{ marginBottom: '10px' }}><b>{address}</b></h4>
-                    <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Tanggal:</h5>
-                    <h4 variant="subtitle2"><b>{date.join(', ')}</b></h4>
+                    {/* <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Tanggal:</h5>
+                    <h4 variant="subtitle2"><b>{date.join(', ')}</b></h4> */}
                     {/* <h4 style={{ marginBottom: '10px' }}>
                         {date.map((list, key) =>
                             <div key={key}>
@@ -77,7 +78,15 @@ const MyPopupMarker = ({ ...props }) => {
                     <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Waktu:</h5>
                     <h4 variant="subtitle2" style={{ marginBottom: '10px' }}><b>{time}</b></h4>
                     <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Vaksin:</h5>
-                    <h4 variant="subtitle2"><b>{dose.join(', ')}</b></h4>
+                    <h4 variant="subtitle2" style={{ marginBottom: '10px' }}><b>{dose.join(', ')}</b></h4>
+                    {
+                        vaccine === '' ?
+                            null :
+                            <div>
+                                <h5 variant="subtitle1" style={{ marginBottom: '-12px' }}>Jenis Vaksin:</h5>
+                                <h4 variant="subtitle2" style={{ marginBottom: '10px' }}><b>{vaccine.join(', ')}</b></h4>
+                            </div>
+                    }
                     <div style={{ marginTop: 20 }}>
                         <Button className={classes.button} variant="contained" color="primary" onClick={(e) => {
                             handleOpenRoute(e, position);
@@ -108,6 +117,7 @@ const MyPopupMarker = ({ ...props }) => {
 }
 
 const MyMarkersList = ({ data }) => {
+    console.log(data)
     const items = data ? data.map(({ key, ...props }) => (
         <MyPopupMarker key={key} {...props} />
     )) : []
